@@ -1,8 +1,11 @@
 #!/bin/sh
 echo "=== Yunhe init start ==="
 
+mkdir -p /proc /sys /dev
+
 mount -t proc none /proc
 mount -t sysfs none /sys
+mount -t devtmpfs none /dev
 
 echo "=== system ready ==="
 

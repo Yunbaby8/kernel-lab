@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-QEMU="/home/yunhe/qemu/build/qemu-system-x86_64"
-KERNEL="linux-6.6.87/arch/x86/boot/bzImage"
-INITRAMFS="initramfs.cpio"
+QEMU="qemu-system-x86_64"
+KERNEL="/home/eric-zhou/linux-6.6.87-lab/arch/x86/boot/bzImage"
+INITRAMFS="/home/eric-zhou/kernel-lab/initramfs.cpio"
 
 "$QEMU" \
   -kernel "$KERNEL" \
