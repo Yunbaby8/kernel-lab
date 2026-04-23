@@ -15,3 +15,7 @@ This repository contains helper scripts and a minimal initramfs used for my Linu
 - Built a minimal initramfs and entered shell
 - Modified kernel version suffix
 - Added printk in start_kernel()
+
+SRC_DIR：只放源码
+BUILD_DIR：放 .config 和所有构建产物
+源码目录里不要留 .config
