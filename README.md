@@ -19,3 +19,9 @@ This repository contains helper scripts and a minimal initramfs used for my Linu
 SRC_DIR：只放源码
 BUILD_DIR：放 .config 和所有构建产物
 源码目录里不要留 .config
+
+/home/yunhe/allcode/
+├── linux-6.6.87-lab/        # 内核源码仓库
+├── linux-6.6.87-build/      # 内核构建输出目录
+└── kernel-lab/
+    └── scripts/             # 你自己的辅助脚本
