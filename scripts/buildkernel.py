@@ -9,8 +9,8 @@ from pathlib import Path
 # =========================
 # 1. 路径与参数配置
 # =========================
-SRC_DIR = Path("~/linux-6.6.87-lab").expanduser().resolve()
-BUILD_DIR = Path("~/linux-6.6.87-build").expanduser().resolve()
+SRC_DIR = Path("/home/yunhe/allcode/linux-6.6.87-lab").resolve()
+BUILD_DIR = Path("/home/yunhe/allcode/linux-6.6.87-build").resolve()
 CONFIG_BACKUP = Path("/tmp/kernel_build_backup.config")
 JOBS = os.cpu_count() or 1
 
@@ -21,6 +21,14 @@ script_start_time = time.time()
 # =========================
 # 2. 通用输出与退出
 # =========================
+def format_elapsed(seconds: float) -> str:
+    minutes = int(seconds // 60)
+    secs = seconds % 60
+    if minutes > 0:
+        return f"{minutes}m {secs:.2f}s"
+    return f"{secs:.2f}s"
+
+
 def log(msg: str) -> None:
     print(f"[INFO] {msg}")
 
@@ -28,7 +36,7 @@ def log(msg: str) -> None:
 def error_exit(msg: str, code: int = 1) -> None:
     print(f"[ERROR] {msg}", file=sys.stderr)
     total_elapsed = time.time() - script_start_time
-    print(f"[INFO] Total elapsed before exit: {total_elapsed:.2f}s")
+    print(f"[INFO] Total elapsed before exit: {format_elapsed(total_elapsed)}")
     sys.exit(code)
 
 
@@ -62,7 +70,7 @@ def run_command(step_name: str, cmd: list[str], cwd: Path | None = None) -> None
 
     elapsed = time.time() - start
     step_times[step_name] = elapsed
-    log(f"{step_name} finished in {elapsed:.2f}s")
+    log(f"{step_name} finished in {format_elapsed(elapsed)}")
 
 
 # =========================
@@ -109,7 +117,6 @@ def create_new_build_dir() -> None:
 
 
 def prepare_config() -> None:
-    src_config = SRC_DIR / ".config"
     build_config = BUILD_DIR / ".config"
 
     if CONFIG_BACKUP.is_file():
@@ -117,16 +124,10 @@ def prepare_config() -> None:
             "Step 3.1 Restore .config from backup to build directory",
             ["cp", str(CONFIG_BACKUP), str(build_config)]
         )
-    elif src_config.is_file():
-        run_command(
-            "Step 3.1 Copy .config from source to build directory",
-            ["cp", str(src_config), str(build_config)]
-        )
     else:
         error_exit(
             "No .config available.\n"
-            f"Checked backup: {CONFIG_BACKUP}\n"
-            f"Checked source: {src_config}"
+            f"Checked backup: {CONFIG_BACKUP}"
         )
 
     run_command(
@@ -170,9 +171,9 @@ def print_summary(bzimage: Path, vmlinux: Path) -> None:
     print()
     print("========== Build Summary ==========")
     for step_name, elapsed in step_times.items():
-        print(f"{step_name}: {elapsed:.2f}s")
+        print(f"{step_name}: {format_elapsed(elapsed)}")
 
-    print(f"Total elapsed: {total_elapsed:.2f}s")
+    print(f"Total elapsed: {format_elapsed(total_elapsed)}")
     print(f"Build output directory: {BUILD_DIR}")
     print(f"bzImage: {bzimage}")
     print(f"vmlinux: {vmlinux}")
@@ -183,12 +184,12 @@ def print_summary(bzimage: Path, vmlinux: Path) -> None:
 # 9. 主流程
 # =========================
 def main() -> None:
+    print("DEBUG: minute-format script loaded")
     log(f"Source directory: {SRC_DIR}")
     log(f"Build directory : {BUILD_DIR}")
     log(f"Parallel jobs   : {JOBS}")
 
     check_source_tree()
-
     backup_existing_build_config()
     remove_old_build_dir()
     create_new_build_dir()
