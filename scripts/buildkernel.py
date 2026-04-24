@@ -9,8 +9,9 @@ from pathlib import Path
 # =========================
 # 1. 路径与参数配置
 # =========================
-SRC_DIR = Path("/home/yunhe/allcode/linux-6.6.87-lab").resolve()
-BUILD_DIR = Path("/home/yunhe/allcode/linux-6.6.87-build").resolve()
+
+SRC_DIR = Path(os.path.expanduser("~/allcode/linux-6.6.87-lab"))
+BUILD_DIR = Path(os.path.expanduser("~/allcode/linux-6.6.87-build"))
 CONFIG_BACKUP = Path("/tmp/kernel_build_backup.config")
 JOBS = os.cpu_count() or 1
 
