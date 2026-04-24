@@ -2,8 +2,10 @@
 set -e
 
 QEMU="qemu-system-x86_64"
-KERNEL="/home/eric-zhou/linux-6.6.87-lab/arch/x86/boot/bzImage"
-INITRAMFS="/home/eric-zhou/kernel-lab/initramfs.cpio"
+BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+
+KERNEL="$BASE_DIR/../linux-6.6.87-build/arch/x86/boot/bzImage"
+INITRAMFS="$BASE_DIR/initramfs.cpio"
 
 "$QEMU" \
   -kernel "$KERNEL" \

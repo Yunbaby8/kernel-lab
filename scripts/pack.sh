@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
-INITRAMFS_DIR="/home/eric-zhou/kernel-lab/initramfs"
-OUTPUT_IMG="/home/eric-zhou/kernel-lab/initramfs.cpio"
+BASE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
+INITRAMFS_DIR="$BASE_DIR/initramfs"
+OUTPUT_IMG="$BASE_DIR/initramfs.cpio"
 echo "[*] Packing initramfs..."
 
 cd "$INITRAMFS_DIR"
