@@ -1,0 +1,1 @@
+savedcmd_/home/yunhe/allcode/kernel-lab/modules/hello_module/Module.symvers :=  scripts/mod/modpost -M        -o /home/yunhe/allcode/kernel-lab/modules/hello_module/Module.symvers -T /home/yunhe/allcode/kernel-lab/modules/hello_module/modules.order -i Module.symvers -e 
