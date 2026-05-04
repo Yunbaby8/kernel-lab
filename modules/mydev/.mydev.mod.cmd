@@ -1,0 +1,1 @@
+savedcmd_/home/yunhe/allcode/kernel-lab/modules/mydev/mydev.mod := printf '%s\n'   mydev.o | awk '!x[$$0]++ { print("/home/yunhe/allcode/kernel-lab/modules/mydev/"$$0) }' > /home/yunhe/allcode/kernel-lab/modules/mydev/mydev.mod
