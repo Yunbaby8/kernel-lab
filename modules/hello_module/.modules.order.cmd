@@ -1,1 +1,1 @@
-savedcmd_/home/yunhe/allcode/kernel-lab/modules/hello_module/modules.order := {   echo /home/yunhe/allcode/kernel-lab/modules/hello_module/hello_module.o; :; } > /home/yunhe/allcode/kernel-lab/modules/hello_module/modules.order
+savedcmd_/home/eric-zhou/allcode/kernel-lab/modules/hello_module/modules.order := {   echo /home/eric-zhou/allcode/kernel-lab/modules/hello_module/hello_module.o; :; } > /home/eric-zhou/allcode/kernel-lab/modules/hello_module/modules.order

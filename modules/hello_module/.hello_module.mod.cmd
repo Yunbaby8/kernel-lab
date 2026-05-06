@@ -1,1 +1,1 @@
-savedcmd_/home/yunhe/allcode/kernel-lab/modules/hello_module/hello_module.mod := printf '%s\n'   hello_module.o | awk '!x[$$0]++ { print("/home/yunhe/allcode/kernel-lab/modules/hello_module/"$$0) }' > /home/yunhe/allcode/kernel-lab/modules/hello_module/hello_module.mod
+savedcmd_/home/eric-zhou/allcode/kernel-lab/modules/hello_module/hello_module.mod := printf '%s\n'   hello_module.o | awk '!x[$$0]++ { print("/home/eric-zhou/allcode/kernel-lab/modules/hello_module/"$$0) }' > /home/eric-zhou/allcode/kernel-lab/modules/hello_module/hello_module.mod
